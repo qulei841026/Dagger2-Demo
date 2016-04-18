@@ -8,9 +8,8 @@ import android.view.ViewGroup;
 import javax.inject.Inject;
 
 import qulei.android.dagger2.demo.R;
-import qulei.android.dagger2.demo.AppComponent;
 import qulei.android.dagger2.demo.abs.AbsFragment;
-import qulei.android.dagger2.demo.component.DaggerLoginComponent;
+import qulei.android.dagger2.demo.component.FragmentComponent;
 import qulei.android.dagger2.demo.processor.LoginListener;
 import qulei.android.dagger2.demo.processor.LoginModule;
 import qulei.android.dagger2.demo.processor.LoginProcessor;
@@ -32,12 +31,19 @@ public class LoginFragment extends AbsFragment implements LoginListener {
         return new LoginFragment();
     }
 
+
     @Override
-    protected void inject(AppComponent appComponent) {
-        DaggerLoginComponent.builder().appComponent(appComponent)
-                .loginModule(new LoginModule(this))
-                .build().inject(this);
+    protected void inject(FragmentComponent fragmentComponent) {
+        super.inject(fragmentComponent);
+        fragmentComponent.loginComponent(new LoginModule(this)).inject(this);
     }
+
+//    @Override
+//    protected void inject(AppComponent appComponent) {
+//        DaggerLoginComponent.builder().appComponent(appComponent)
+//                .loginModule(new LoginModule(this))
+//                .build().inject(this);
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
