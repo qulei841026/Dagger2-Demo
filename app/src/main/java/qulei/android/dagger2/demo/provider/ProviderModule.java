@@ -10,13 +10,13 @@ import qulei.android.dagger2.demo.MainApplication;
 public class ProviderModule {
 
     @Provides
-    public AuthProvider provideAuthProvider(MainApplication application) {
+    AuthProvider provideAuthProvider(MainApplication application) {
         return new AuthProviderImpl(application);
     }
 
     @Provides
     @Singleton
-    public MessageProvider provideMessageProvider(MainApplication application) {
+    MessageProvider provideMessageProvider(MainApplication application) {
         return new MessageProviderImpl(application);
     }
 

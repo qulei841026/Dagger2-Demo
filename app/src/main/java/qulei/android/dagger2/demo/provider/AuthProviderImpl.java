@@ -6,7 +6,7 @@ class AuthProviderImpl implements AuthProvider {
 
     Context mContext;
 
-    public AuthProviderImpl(Context context) {
+    AuthProviderImpl(Context context) {
         this.mContext = context;
     }
 
